@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <div th:each="user : ${user}">
+        <tr>
+            <th><a th:href="@{users/{id}(id=${user.getId()})}" th:text="${user.toString() }">user</a></th>
+            <th><a th:href="@{users/{id}/edit(id=${user.getId()})}"><img
+                    th:src="@{/resources/images/84380.png}" width="20" height="20"
+                    title="Редактировать пользователя"></a></th>
+            <th>
+                <form th:method="DELETE" th:action="@{users/{id}(id=${user.getId()})}">
+                    <input type="image" th:src="@{/resources/images/3221803.png}" alt="Submit" width="20" height="20"
+                           title="Удалить пользователя"></form>
+            </th>
+        </tr>
+    </div>
+</table>
+<form th:action="@{users/new}" target="_blank">
+    <button>Создать пользователя</button>
+</form>
+</body>
+</html>
