@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 @Transactional(readOnly = true)
 
-public class ServiceUser {
+public class ServiceUser implements web.service.Service {
     private final UserRepository userRepository;
 
     @Autowired
@@ -20,9 +20,13 @@ public class ServiceUser {
         this.userRepository = userRepository;
     }
 
+    @Override
+
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
+    @Override
 
     public User findOne(Long id) {
         Optional<User> foundUser = userRepository.findById(id);
@@ -30,17 +34,20 @@ public class ServiceUser {
     }
 
     @Transactional
+    @Override
     public void save(User user) {
         userRepository.save(user);
     }
 
     @Transactional
+    @Override
     public void update(Long id, User user) {
         user.setId(id);
         userRepository.save(user);
     }
 
     @Transactional
+    @Override
     public void delete(Long id) {
         userRepository.deleteById(id);
     }

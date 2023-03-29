@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
+import web.service.Service;
 import web.service.ServiceUser;
 
 
@@ -12,10 +13,10 @@ import web.service.ServiceUser;
 @RequestMapping("/users")
 public class UserController {
 
-    private final ServiceUser serviceUser;
+    private final Service serviceUser;
 
     @Autowired
-    public UserController(ServiceUser serviceUser) {
+    public UserController(Service serviceUser) {
         this.serviceUser = serviceUser;
     }
 
